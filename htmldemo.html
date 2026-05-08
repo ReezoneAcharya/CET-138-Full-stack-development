@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio | HTML</title>
+</head>
+<body>
+    <nav>
+        <h2>CET138 DEV PORTFOLIO</h2>
+        <a href="index.html">1. Full Stack</a>
+        <a href="htmldemo.html" class="active">2. HTML</a>
+        <a href="cssdemo.html">3. CSS</a>
+        <a href="bootstrapdemo.html">4. Bootstrap</a>
+        <a href="jsdemo.html">5. JavaScript</a>
+    </nav>
+    <main>
+        <span class="badge">Structure & Inputs</span>
+        <h1>HTML Data Collection</h1>
+        <div class="card">
+            <p>HTML provides the structure for user interaction via <code>&lt;form&gt;</code> elements and <code>&lt;input&gt;</code> fields.</p>
+            
+            <h3>Demonstration: User Age Classifier</h3>
+            <div class="center-demo">
+                <div style="width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <label style="font-size: 0.8rem; font-weight: bold;">Full Name</label>
+                    <input type="text" id="userName" placeholder="Enter name" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    
+                    <label style="font-size: 0.8rem; font-weight: bold;">Your Age</label>
+                    <input type="number" id="userAge" placeholder="Enter age" style="width: 100%; padding: 10px; margin: 5px 0 20px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    
+                    <button onclick="checkAge()" style="width: 100%; padding: 12px; background: #4361ee; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Classify Me</button>
+                    
+                    <div id="htmlResult" style="margin-top: 20px; text-align: center; font-weight: bold; color: #1a1a2e; min-height: 24px;"></div>
+                </div>
+            </div>
+            
+            <p><em>Explanation:</em> This form uses <code>type="text"</code> and <code>type="number"</code> inputs. While HTML provides the boxes, I have linked a JavaScript function to process the data based on the categories: Minor (&lt;18), Adult (18-49), and Old (50+).</p>
+        </div>
+    </main>
+
+    <script>
+        function checkAge() {
+            const name = document.getElementById('userName').value;
+            const age = parseInt(document.getElementById('userAge').value);
+            const result = document.getElementById('htmlResult');
+
+            if (!name || isNaN(age)) {
+                result.innerText = "Please fill in both fields.";
+                return;
+            }
+
+            let category = "";
+            if (age < 18) category = "a Minor";
+            else if (age >= 18 && age < 50) category = "an Adult";
+            else category = "Old (Senior)";
+
+            result.innerText = `Hi ${name}, you are ${category}!`;
+        }
+    </script>
+</body>
+</html>
