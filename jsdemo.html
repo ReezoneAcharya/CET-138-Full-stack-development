@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ePortfolio | JavaScript</title>
+</head>
+<body>
+    <nav>
+        <h2>Development Skills</h2>
+        <div class="menu-links">
+            <a href="index.html">1. Full Stack</a>
+            <a href="htmldemo.html">2. HTML</a>
+            <a href="cssdemo.html">3. CSS</a>
+            <a href="bootstrapdemo.html">4. Bootstrap</a>
+            <a href="jsdemo.html" class="active">5. JavaScript</a>
+        </div>
+    </nav>
+    <main>
+        <span class="badge">Logic</span>
+        <h1>JavaScript Interactivity</h1>
+        <div class="card">
+            <p>JavaScript allows developers to create dynamic content that reacts to user events in real-time by manipulating the Document Object Model (DOM).</p>
+            
+            <div class="demo-container">
+                <div style="text-align: center;">
+                    <h2 id="counterVal" style="font-size: 4rem; margin: 0; color: #0f172a;">0</h2>
+                    <p style="color: #64748b; margin-bottom: 20px;">Task Counter</p>
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button onclick="updateCounter(1)" style="padding: 12px 25px; border: none; background: #38bdf8; color: #0f172a; border-radius: 8px; cursor: pointer; font-weight: bold;">+ Add</button>
+                        <button onclick="updateCounter(-1)" style="padding: 12px 25px; border: 1px solid #e2e8f0; background: white; color: #0f172a; border-radius: 8px; cursor: pointer;">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- This explanation describes the JS logic used to change the page state without a refresh -->
+            <p><em>Demonstration Explanation:</em> This counter app uses an event listener (<code>onclick</code>) to trigger a function that modifies the <code>innerText</code> of a specific element. It also includes logic to change the text color once the count reaches a certain threshold, demonstrating how JS manages application state.</p>
+        </div>
+    </main>
+    <script>
+        let currentCount = 0;
+        function updateCounter(amount) {
+            if (amount === -1) {
+                currentCount = 0;
+            } else {
+                currentCount += amount;
+            }
+            
+            const display = document.getElementById('counterVal');
+            display.innerText = currentCount;
+            
+            // Logic to provide visual feedback based on the data value
+            display.style.color = currentCount >= 10 ? '#ef4444' : '#0f172a';
+        }
+    </script>
+</body>
+</html>

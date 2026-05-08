@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ePortfolio | CSS</title>
+</head>
+<body>
+    <nav>
+        <h2>Development Skills</h2>
+        <div class="menu-links">
+            <a href="index.html">1. Full Stack</a>
+            <a href="htmldemo.html">2. HTML</a>
+            <a href="cssdemo.html" class="active">3. CSS</a>
+            <a href="bootstrapdemo.html">4. Bootstrap</a>
+            <a href="jsdemo.html">5. JavaScript</a>
+        </div>
+    </nav>
+    <main>
+        <span class="badge">Styling</span>
+        <h1>CSS Animation & Hover</h1>
+        <div class="card">
+            <p>CSS is used to enhance user experience by providing visual feedback through animations and transformations.</p>
+            
+            <div class="demo-container">
+                <div class="interactive-box">
+                    HOVER ME
+                </div>
+            </div>
+
+            <!-- This explanation clarifies how the color-catch logic works using only CSS animation states -->
+            <p><em>Demonstration Explanation:</em> To create an effect where the color changes differently each time, I implemented an infinite color-cycle using <code>@keyframes</code>. By setting the <code>animation-play-state</code> to 'paused' by default and 'running' on <code>:hover</code>, the element "catches" whatever color the cycle is currently on, creating a randomized visual effect.</p>
+        </div>
+    </main>
+</body>
+</html>
