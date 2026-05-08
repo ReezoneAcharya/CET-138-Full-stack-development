@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ePortfolio | HTML Validation</title>
+    <style>
+        .error-text {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            display: none; /* Hidden by default */
+        }
+        input.invalid {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Dev Portfolio</h2>
+        <div class="menu-links">
+            <a href="index.html">1. Full Stack</a>
+            <a href="htmldemo.html" class="active">2. HTML</a>
+            <a href="cssdemo.html">3. CSS</a>
+            <a href="bootstrapdemo.html">4. Bootstrap</a>
+            <a href="jsdemo.html">5. JavaScript</a>
+        </div>
+    </nav>
+
+    <main>
+        <span class="badge">Data Integrity</span>
+        <h1>Form with Validation</h1>
+        
+        <div class="card">
+            <p>Validation ensures that the data collected is accurate and secure before it is processed. This demonstration uses JavaScript to enforce rules on the HTML input fields.</p>
+
+            <div class="demo-container" style="flex-direction: column;">
+                <!-- REGISTRATION FORM -->
+                <div id="regForm" style="width: 100%; max-width: 400px; background: white; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                    <h3 style="margin-top:0; color:#0f172a;">Register Account</h3>
+                    
+                    <label style="display:block; font-size: 0.8rem; font-weight:600; margin-bottom:5px;">Username</label>
+                    <input type="text" id="regUser" placeholder="Min 3 characters" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px;">
+                    <div id="userError" class="error-text">Username must be at least 3 characters.</div>
+
+                    <label style="display:block; font-size: 0.8rem; font-weight:600; margin-bottom:5px; margin-top:10px;">Email Address</label>
+                    <input type="email" id="regEmail" placeholder="example@mail.com" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px;">
+                    <div id="emailError" class="error-text">Please enter a valid email address.</div>
+
+                    <label style="display:block; font-size: 0.8rem; font-weight:600; margin-bottom:5px; margin-top:10px;">Phone Number</label>
+                    <input type="text" id="regPhone" placeholder="Numbers only (min 10 digits)" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px;">
+                    <div id="phoneError" class="error-text">Enter a valid phone number (digits only).</div>
+
+                    <label style="display:block; font-size: 0.8rem; font-weight:600; margin-bottom:5px; margin-top:10px;">Password</label>
+                    <input type="password" id="regPass" placeholder="••••••••" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px;">
+                    <div id="passError" class="error-text">Password must be at least 6 characters.</div>
+
+                    <button onclick="validateAndSave()" style="width:100%; padding:14px; background:#0f172a; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600; margin-top:20px;">Register & Save</button>
+                </div>
+
+                <!-- SUCCESS CARD -->
+                <div id="successCard" style="display:none; width: 100%; max-width: 400px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 30px; border-radius: 15px; text-align: center;">
+                    <div style="color: #16a34a; font-size: 3rem;">✓</div>
+                    <h3 style="margin:0; color:#166534;">Data Validated & Saved</h3>
+                    <div id="displayData" style="text-align:left; background:white; padding:15px; border-radius:8px; border:1px solid #bbf7d0; font-size:0.9rem; margin-top:15px;"></div>
+                    <button onclick="location.reload()" style="margin-top:20px; background:none; border:none; color:#166534; text-decoration:underline; cursor:pointer; font-size:0.8rem;">Create another account</button>
+                </div>
+            </div>
+
+            <p><strong>Demonstration Explanation:</strong> In this working example, I have implemented <strong>Client-Side Validation</strong>. The logic checks for three criteria: 
+                1) <strong>Pattern Matching:</strong> The email and phone fields are checked against regular expressions. 
+                2) <strong>Length Requirements:</strong> The username and password must meet a minimum character count. 
+                3) <strong>Visual Feedback:</strong> If validation fails, the UI dynamically displays error messages and highlights the offending fields in red, demonstrating a focus on User Experience (UX).</p>
+        </div>
+    </main>
+
+    <script>
+        function validateAndSave() {
+            // Get elements
+            const user = document.getElementById('regUser');
+            const email = document.getElementById('regEmail');
+            const phone = document.getElementById('regPhone');
+            const pass = document.getElementById('regPass');
+
+            // Reset Errors
+            document.querySelectorAll('.error-text').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('input').forEach(el => el.classList.remove('invalid'));
+
+            let isValid = true;
+
+            // 1. Username Validation (Min 3 chars)
+            if (user.value.length < 3) {
+                document.getElementById('userError').style.display = 'block';
+                user.classList.add('invalid');
+                isValid = false;
+            }
+
+            // 2. Email Validation (Regex pattern)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                document.getElementById('emailError').style.display = 'block';
+                email.classList.add('invalid');
+                isValid = false;
+            }
+
+            // 3. Phone Validation (Numbers only, min 10 digits)
+            const phonePattern = /^[0-9]{10,15}$/;
+            if (!phonePattern.test(phone.value)) {
+                document.getElementById('phoneError').style.display = 'block';
+                phone.classList.add('invalid');
+                isValid = false;
+            }
+
+            // 4. Password Validation (Min 6 chars)
+            if (pass.value.length < 6) {
+                document.getElementById('passError').style.display = 'block';
+                pass.classList.add('invalid');
+                isValid = false;
+            }
+
+            // Final Step: If all valid, simulate the save
+            if (isValid) {
+                document.getElementById('regForm').style.display = 'none';
+                document.getElementById('successCard').style.display = 'block';
+                document.getElementById('displayData').innerHTML = `
+                    <strong>Username:</strong> ${user.value}<br>
+                    <strong>Email:</strong> ${email.value}<br>
+                    <strong>Phone:</strong> ${phone.value}<br>
+                    <strong>Status:</strong> Verified & Stored
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
