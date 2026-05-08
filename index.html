@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ePortfolio | Full Stack Architecture</title>
+</head>
+<body>
+    <nav>
+        <h2>Dev Portfolio</h2>
+        <div class="menu-links">
+            <a href="index.html" class="active">1. Full Stack</a>
+            <a href="htmldemo.html">2. HTML</a>
+            <a href="cssdemo.html">3. CSS</a>
+            <a href="bootstrapdemo.html">4. Bootstrap</a>
+            <a href="jsdemo.html">5. JavaScript</a>
+        </div>
+    </nav>
+
+    <main>
+        <span class="badge">Architecture</span>
+        <h1>The Full Stack Connection</h1>
+        
+        <div class="card">
+            <h3>The 3-Tier Architecture</h3>
+            <p>Full stack development is defined by the integration of three distinct layers. Rather than working in isolation, these layers communicate through a Request-Response cycle to create a functional system.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+                <!-- Layer 1 -->
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-top: 5px solid #38bdf8;">
+                    <h4 style="margin-top:0;">1. Presentation (Front-End)</h4>
+                    <p style="font-size: 0.85rem;">The entry point. Users interact with HTML/CSS/JS which captures data and sends <strong>HTTP Requests</strong> to the server.</p>
+                </div>
+                <!-- Layer 2 -->
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-top: 5px solid #0f172a;">
+                    <h4 style="margin-top:0;">2. Logic (Back-End)</h4>
+                    <p style="font-size: 0.85rem;">The middle-man. A server (Node.js/PHP) receives requests, processes business logic, and communicates with the data layer.</p>
+                </div>
+                <!-- Layer 3 -->
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-top: 5px solid #64748b;">
+                    <h4 style="margin-top:0;">3. Data (Database)</h4>
+                    <p style="font-size: 0.85rem;">The storage. Systems like MySQL or MongoDB store persistent information that survives even when the server restarts.</p>
+                </div>
+            </div>
+
+            <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+
+            <!-- This is the demonstration of the "Connection" logic -->
+            <h3>Demonstration: Data Flow & Integration</h3>
+            <div class="demo-container">
+                <div style="width: 100%;">
+                    <div style="background: #1e293b; color: #38bdf8; padding: 20px; border-radius: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem;">
+                        <div style="color: #94a3b8; margin-bottom: 10px;">// Step 1: Front-end sends data</div>
+                        <div>POST /api/login { user: "Admin", pass: "123" }</div>
+                        
+                        <div style="color: #94a3b8; margin: 15px 0 10px 0;">// Step 2: Back-end queries Database</div>
+                        <div style="color: #fbbf24;">SELECT * FROM users WHERE username = 'Admin';</div>
+                        
+                        <div style="color: #94a3b8; margin: 15px 0 10px 0;">// Step 3: Connection Complete</div>
+                        <div style="color: #34d399;">200 OK: "Access Granted"</div>
+                    </div>
+                    
+                    <p style="margin-top: 20px; font-size: 0.9rem; line-height: 1.6;">
+                        <strong>Explanation of Connection:</strong> This demonstration shows my understanding of how the layers connect. 
+                        The <strong>Frontend</strong> initiates the cycle with a fetch request. The <strong>Backend</strong> 
+                        receives this, uses a <strong>Database</strong> driver to verify information, and then returns the 
+                        final status to the user. This integrated workflow is what makes an application "Full Stack."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
